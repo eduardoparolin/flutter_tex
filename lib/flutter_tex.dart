@@ -1,4 +1,4 @@
-library flutter_tex;
+library flutter_tex_web_only;
 
 export 'package:flutter_tex/src/models/font.dart';
 export 'package:flutter_tex/src/models/rendering_engine.dart';
