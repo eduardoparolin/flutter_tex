@@ -43,7 +43,7 @@ class TeXViewStyle {
   /// Font styling for TeXView widgets
   final TeXViewFontStyle? fontStyle;
 
-  final int? scaleStyle;
+  final double? scaleStyle;
 
   const TeXViewStyle(
       {this.padding,
