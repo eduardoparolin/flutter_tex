@@ -43,6 +43,8 @@ class TeXViewStyle {
   /// Font styling for TeXView widgets
   final TeXViewFontStyle? fontStyle;
 
+  final int? scaleStyle;
+
   const TeXViewStyle(
       {this.padding,
       this.margin,
@@ -55,7 +57,8 @@ class TeXViewStyle {
       this.border,
       this.borderRadius,
       this.textAlign,
-      this.fontStyle})
+      this.fontStyle,
+      this.scaleStyle})
       : cascadingStyleSheets = null;
 
   /// Styling TeXView with hard coded CSS e.g. "color:green;background-color:red".
@@ -71,10 +74,11 @@ class TeXViewStyle {
         border = null,
         borderRadius = null,
         fontStyle = null,
-        textAlign = null;
+        textAlign = null,
+        scaleStyle = null;
 
   String? initStyle() {
     return cascadingStyleSheets ??
-        """$teXViewDefaultStyle ${padding?.getPadding() ?? ""}${margin?.getMargin() ?? ""}${borderRadius?.getRadius() ?? ""}${border?.getBorder() ?? ""}${height != null ? "height: " + getSizeWithUnit(height, sizeUnit) + ";" : ""}${width != null ? "width: " + getSizeWithUnit(width, sizeUnit) + ";" : ""}${elevation != null ? "box-shadow: " + getElevation(elevation, sizeUnit) + ";" : ""}${contentColor != null ? "color: " + getColor(contentColor) + ";" : ""}${backgroundColor != null ? "background-color: " + getColor(backgroundColor) + ";" : ""}${textAlign != null ? "text-align: " + TeXViewTextAlignHelper.getValue(textAlign) + ";" : ""}${fontStyle?.initFontStyle() ?? ""}""";
+        """scale: ${scaleStyle ?? '1'}; $teXViewDefaultStyle ${padding?.getPadding() ?? ""}${margin?.getMargin() ?? ""}${borderRadius?.getRadius() ?? ""}${border?.getBorder() ?? ""}${height != null ? "height: " + getSizeWithUnit(height, sizeUnit) + ";" : ""}${width != null ? "width: " + getSizeWithUnit(width, sizeUnit) + ";" : ""}${elevation != null ? "box-shadow: " + getElevation(elevation, sizeUnit) + ";" : ""}${contentColor != null ? "color: " + getColor(contentColor) + ";" : ""}${backgroundColor != null ? "background-color: " + getColor(backgroundColor) + ";" : ""}${textAlign != null ? "text-align: " + TeXViewTextAlignHelper.getValue(textAlign) + ";" : ""}${fontStyle?.initFontStyle() ?? ""}""";
   }
 }
